@@ -1,0 +1,18 @@
+name: "Continuous Deploy"
+on:
+    workflow_run:
+        workflows: ["Deployment workflow"]
+        types:
+            - completed
+jobs:
+    pull_and_run_code:
+        runs-on: self-hosted
+        steps:
+            - name: "Remove conatiner cyclobold"
+              run: "sudo docker rm -f cyclobold || true"
+            
+            - name: "Get the code from Docker Hub"
+              run: "sudo docker pull seun007/cyclobold:latest"
+            
+            - name: "Run the image as a container"
+              run: "sudo docker run -d -p 80:80 --name cyclobold seun007/cyclobold:latest"  
