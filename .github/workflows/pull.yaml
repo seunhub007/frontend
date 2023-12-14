@@ -49,5 +49,5 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
           to: sadiboseun@yahoo.com
-          from: sadiboseun@gmail.com
+          from: sadiboseun2013@gmail.com
           body: Build job of ${{github.repository}} completed successfully!
